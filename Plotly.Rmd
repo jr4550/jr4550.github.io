@@ -1,0 +1,125 @@
+---
+title: "Plotly "
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+```{r}
+data("instacart")
+```
+
+# Plotly Plots 
+## Scatterplot 
+
+```{r}
+top_aisles = instacart %>%
+  count(aisle) %>%
+  arrange(desc(n)) %>%
+  slice_head(n = 20)
+
+top_product_per_aisle = instacart %>%
+  filter(aisle %in% top_aisles$aisle) %>%
+  count(aisle, product_name) %>%
+  group_by(aisle) %>%
+  slice_max(n, n = 1) %>%
+  ungroup() %>%
+  select(aisle, top_product = product_name)
+
+top_aisles = top_aisles %>%
+  left_join(top_product_per_aisle, by = "aisle") %>%
+  mutate(aisle = fct_reorder(aisle, n))
+
+plot_ly(
+  data = top_aisles,
+  x = ~n,
+  y = ~aisle,
+  type = 'bar',
+  orientation = 'h',
+  marker = list(color = 'steelblue'),
+  customdata = ~top_product,
+  hovertemplate = paste(
+    '<b>%{y}</b><br>',
+    'Orders: %{x:.0f}<br>',
+    'Most Ordered: %{customdata}<br>',
+    '<extra></extra>'
+  )
+) %>%
+  layout(
+    title = "Top 20 Aisles by Number of Orders",
+    xaxis = list(title = "Number of Orders"),
+    yaxis = list(title = ""),
+    margin = list(l = 150)
+  )
+```
+
+```{r}
+order_heatmap_data = instacart %>%
+  count(order_dow, order_hour_of_day) %>%
+  pivot_wider(
+    names_from = order_hour_of_day,
+    values_from = n,
+    values_fill = 0
+  )
+
+heatmap_matrix = order_heatmap_data %>%
+  select(-order_dow) %>%
+  as.matrix()
+
+day_labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+
+plot_ly(
+  z = heatmap_matrix,
+  x = 0:23,
+  y = day_labels,
+  type = 'heatmap',
+  colorscale = 'Peach',
+  hovertemplate = paste(
+    'Day: %{y}<br>',
+    'Hour: %{x}<br>',
+    'Orders: %{z}<br>',
+    '<extra></extra>'
+  )
+) %>%
+  layout(
+    title = "Order Intensity by Day of Week and Hour",
+    xaxis = list(title = "Hour of Day"),
+    yaxis = list(title = "Day of Week")
+  )
+```
+
+```{r}
+ice_cream_by_day = instacart %>%
+  filter(str_detect(product_name, regex("ice cream", ignore_case = TRUE))) %>%
+  mutate(day_name = factor(order_dow, 
+                           levels = 0:6,
+                           labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"))) %>%
+  count(day_name)
+
+plot_ly(
+  data = ice_cream_by_day,
+  x = ~day_name,
+  y = ~n,
+  type = 'scatter',
+  mode = 'lines+markers',
+  line = list(color = 'coral', width = 3),
+  marker = list(size = 8, color = 'coral'),
+  hovertemplate = paste(
+    'Day: %{x}<br>',
+    'Ice Cream Orders: %{y}<br>',
+    '<extra></extra>'
+  )
+) %>%
+  layout(
+    title = "Ice Cream Orders by Day of Week",
+    xaxis = list(title = "Day of Week"),
+    yaxis = list(title = "Number of Orders")
+  )
+```
+
