@@ -13,3 +13,6 @@ Hi there! My name is Jeff Remo. I am 2nd year MPH student at Columbia University
 ### Professional Experience Page 
 To find out more about my academic and professional experience, look at my [About Me](about.html) page. 
 
+### P8105 Dashboard 
+To view the dashboard I made for my P8105: Data Science Class, look at my [Dashboard Page](dashboard.html)
+
