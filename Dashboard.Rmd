@@ -20,6 +20,46 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
+order_heatmap_data = instacart %>%
+  count(order_dow, order_hour_of_day) %>%
+  pivot_wider(
+    names_from = order_hour_of_day,
+    values_from = n,
+    values_fill = 0
+  )
+
+heatmap_matrix = order_heatmap_data %>%
+  select(-order_dow) %>%
+  as.matrix()
+
+day_labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+
+plot_ly(
+  z = heatmap_matrix,
+  x = 0:23,
+  y = day_labels,
+  type = 'heatmap',
+  colorscale = 'Peach',
+  hovertemplate = paste(
+    'Day: %{y}<br>',
+    'Hour: %{x}<br>',
+    'Orders: %{z}<br>',
+    '<extra></extra>'
+  )
+) %>%
+  layout(
+    title = "Order Intensity by Day of Week and Hour",
+    xaxis = list(title = "Hour of Day"),
+    yaxis = list(title = "Day of Week")
+  )
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
 top_aisles = instacart %>%
   count(aisle) %>%
   arrange(desc(n)) %>%
@@ -57,46 +97,6 @@ plot_ly(
     xaxis = list(title = "Number of Orders"),
     yaxis = list(title = ""),
     margin = list(l = 150)
-  )
-```
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
-order_heatmap_data = instacart %>%
-  count(order_dow, order_hour_of_day) %>%
-  pivot_wider(
-    names_from = order_hour_of_day,
-    values_from = n,
-    values_fill = 0
-  )
-
-heatmap_matrix = order_heatmap_data %>%
-  select(-order_dow) %>%
-  as.matrix()
-
-day_labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-
-plot_ly(
-  z = heatmap_matrix,
-  x = 0:23,
-  y = day_labels,
-  type = 'heatmap',
-  colorscale = 'Peach',
-  hovertemplate = paste(
-    'Day: %{y}<br>',
-    'Hour: %{x}<br>',
-    'Orders: %{z}<br>',
-    '<extra></extra>'
-  )
-) %>%
-  layout(
-    title = "Order Intensity by Day of Week and Hour",
-    xaxis = list(title = "Hour of Day"),
-    yaxis = list(title = "Day of Week")
   )
 ```
 
