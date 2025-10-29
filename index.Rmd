@@ -1,0 +1,15 @@
+---
+title: "Home"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+Hi there! My name is Jeff Remo. I am 2nd year MPH student at Columbia University Mailman School of Public Health. I am in the Heilbrunn Department of Population and Family Health and with a focus in Health Communication.
+
+<img src="images/github pic.jpg" style="width:75%">
+
+
+### Professional Experience Page 
+To find out more about my academic and professional experience, look at my [About Me](about.html) page. 
+
