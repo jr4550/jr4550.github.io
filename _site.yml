@@ -1,12 +1,16 @@
-name: "Yay internet!"
+name: "Jeff Remo | Public Health Portfolio"
 output_dir: "."
 navbar:
-  title: "Home"
+  title: "Jeff Remo, MPH"
   right:
-    - text: "About Me"
+    - text: "Sexual Health Leadership"
+      href: sexual-health.html
+    - text: "Experience"
       href: about.html
-    - text: "Dashboard"
+    - text: "Data Science"
       href: Dashboard.html
+    - icon: fa-brands fa-google-drive
+      href: https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00
     - icon: fa-envelope fa-lg
       href: mailto:<jr4550@cumc.columbia.edu>
     - icon: fa-github fa-lg

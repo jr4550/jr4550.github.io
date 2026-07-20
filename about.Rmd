@@ -1,12 +1,14 @@
 ---
-title: "About me "
-output: 
+title: "Experience & Leadership"
+output:
   html_document:
     toc: true
     toc_float: true
 ---
 
 # My Journey in Public Health and Community Advocacy
+
+*For a closer look at my sexual health programs and campaigns, visit my [Sexual Health Leadership](sexual-health.html) page.*
 
 My career has been defined by a commitment to bridging health equity gaps in vulnerable communities, particularly in HIV/STI prevention and LGBTQ+ health. After earning my BA in Public Health from the University of Hawai'i at Mānoa in 2017, I immediately put my education into action, launching Honolulu's first PrEP navigation program at the Hawaii Health and Harm Reduction Center. That program exceeded enrollment targets by 300% in its first year—a testament to both the community's need and my ability to translate public health principles into accessible, community-centered care.
 
