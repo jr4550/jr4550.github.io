@@ -1,406 +1,218 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Home</title>
-
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeff Remo, MPH — Public Health &amp; Sexual Health Leadership</title>
+<meta name="description" content="Portfolio of Jeff Remo, MPH candidate at Columbia Mailman School of Public Health — building programs, campaigns, and leadership in HIV/STI prevention and sexual health equity.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+<link rel="stylesheet" href="css/fonts/fonts.css">
+<link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="css/site.css">
 </head>
-
 <body>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Jeff Remo, MPH</a>
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Jeff Remo <span>&middot;</span> MPH</a>
+    <ul class="nav-links">
+      <li><a href="sexual-health.html">Sexual Health Leadership</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="photos.html">Photos</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00" target="_blank" rel="noopener" aria-label="Google Drive"><i class="fa-brands fa-google-drive"></i></a>
+      <a href="mailto:jr4550@cumc.columbia.edu" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="http://github.com/jr4550/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/jefferson-remo-14899811a/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="sexual-health.html">Sexual Health Leadership</a>
-</li>
-<li>
-  <a href="about.html">Experience</a>
-</li>
-<li>
-  <a href="Dashboard.html">Data Science</a>
-</li>
-<li>
-  <a href="https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00">
-    <span class="fa fa-brands fa-google-drive"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="mailto:&lt;jr4550@cumc.columbia.edu&gt;">
-    <span class="fa fa-envelope fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="http://github.com/jr4550/">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://www.linkedin.com/in/jefferson-remo-14899811a/">
-    <span class="fa fa-brands fa-linkedin"></span>
-     
-  </a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Home</h1>
-
+<div class="mobile-drawer">
+  <div class="drawer-top">
+    <span class="brand">Jeff Remo</span>
+    <button class="drawer-close" aria-label="Close menu">&times;</button>
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sexual-health.html">Sexual Health Leadership</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="photos.html">Photos</a></li>
+  </ul>
+  <div class="drawer-icons">
+    <a href="mailto:jr4550@cumc.columbia.edu" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    <a href="http://github.com/jr4550/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/jefferson-remo-14899811a/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+  </div>
 </div>
 
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">Public Health &middot; Sexual Health Equity</div>
+      <h1>Building the systems that make sexual health <em>accessible</em>.</h1>
+      <p class="lede">I'm Jeff Remo (he/they), an MPH candidate at Columbia's Mailman School of Public Health. My work sits at the intersection of HIV/STI prevention, health communication, and LGBTQ+ community leadership &mdash; from launching Hawai&rsquo;i's first PrEP navigation program to leading statewide sexual health campaigns in Colorado.</p>
+      <div class="btn-row">
+        <a href="sexual-health.html" class="btn btn-primary">Sexual Health Leadership <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="experience.html" class="btn btn-ghost">View Experience</a>
+      </div>
+    </div>
+    <div class="reveal in">
+      <div class="hero-photo">
+        <img src="images/headshot.jpg" alt="Jeff Remo">
+        <div class="hero-photo-badge">
+          Jeff Remo, MPH Candidate
+          <span>Columbia Mailman School of Public Health</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<div style="display flex; text-align:center;">
-<p><img src="images/headshot.jpg" style="width:40%; border-radius:8px; float:right; margin: 0 0 20px 30px;"></p>
-</div>
-<div id="jeff-remo-mph-candidate" class="section level1">
-<h1>Jeff Remo, MPH Candidate</h1>
-<div id="public-health-leader-advancing-sexual-health-equity"
-class="section level2">
-<h2>Public health leader advancing sexual health equity</h2>
-<p>Hi, I’m Jeff Remo (he/they) — a public health practitioner and
-2nd-year MPH student at Columbia University’s Mailman School of Public
-Health, in the Heilbrunn Department of Population and Family Health with
-a focus in Health Communication.</p>
-<p>My career has centered on <strong>HIV/STI prevention, PrEP access,
-and LGBTQ+ health equity</strong> — from launching Hawai’i’s first PrEP
-navigation program, to serving as an HIV/STI Disease Intervention
-Specialist during the 2022 MPOX outbreak, to leading sexual health
-communication campaigns reaching thousands of community members. I
-currently mentor emerging HIV advocates nationally through NMAC’s
-NextGen Fellowship and provide direct sexual health education to youth
-through Project STAY.</p>
-<p>This site is a portfolio of that work: the programs I’ve built, the
-campaigns I’ve led, and the resources I’ve created in service of sexual
-health equity.</p>
-<div style="margin: 25px 0;">
-<p><a href="sexual-health.html" class="btn btn-primary" style="margin-right:10px;">Explore
-My Sexual Health Leadership »</a>
-<a href="https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00" class="btn btn-default" target="_blank">View
-Full Resource Archive</a></p>
-</div>
-<hr />
-<div id="at-a-glance" class="section level3">
-<h3>At a Glance</h3>
-<ul>
-<li><strong>300%</strong> — enrollment growth achieved in year one of
-the PrEP navigation program I launched at the Hawai’i Health &amp; Harm
-Reduction Center</li>
-<li><strong>200+</strong> — individuals newly diagnosed with HIV or
-syphilis I provided direct partner services and linkage to care for as a
-Disease Intervention Specialist</li>
-<li><strong>30</strong> — emerging HIV advocates I mentor nationally as
-an NMAC NextGen Fellowship Emerging Leadership Champion</li>
-<li><strong>10,000+</strong> — impressions generated by sexual health
-messaging campaigns I designed for the Colorado Department of Public
-Health &amp; Environment</li>
-</ul>
-<hr />
-</div>
-<div id="explore-my-work" class="section level3">
-<h3>Explore My Work</h3>
-<p><strong><a href="sexual-health.html">Sexual Health Leadership
-»</a></strong> Campaigns, programs, and resources I’ve built to advance
-HIV/STI prevention and sexual health equity, drawn from my <a
-href="https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00">Google
-Drive portfolio</a>.</p>
-<p><strong><a href="about.html">Experience &amp; Leadership
-»</a></strong> My professional journey, academic leadership at Columbia,
-and full resume.</p>
-<p><strong><a href="Dashboard.html">Data Science Work »</a></strong>
-Data visualization and analysis work from my MPH coursework.</p>
-</div>
-</div>
-</div>
+<section class="stat-strip">
+  <div class="wrap stat-grid">
+    <div class="reveal">
+      <div class="stat-num">300%</div>
+      <div class="stat-label">Year-one enrollment growth for the PrEP navigation program I launched in Honolulu</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Individuals newly diagnosed with HIV or syphilis I supported through direct partner services</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">30</div>
+      <div class="stat-label">Emerging HIV advocates I mentor nationally through NMAC's NextGen Fellowship</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">10K+</div>
+      <div class="stat-label">Impressions generated by sexual health campaigns I designed for Colorado's health department</div>
+    </div>
+  </div>
+</section>
 
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What I Do</div>
+      <h2>Public health, practiced close to the community.</h2>
+      <p class="lede">I design the programs, messages, and mentorship pipelines that turn public health science into services people actually use.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-route"></i></div>
+        <h3>Program &amp; Access Design</h3>
+        <p>Built Hawai&rsquo;i's first PrEP navigation pathway and served as an HIV/STI Disease Intervention Specialist &mdash; turning biomedical prevention tools into services people can actually reach.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+        <h3>Health Communication</h3>
+        <p>Designed bilingual sexual health campaigns, outbreak communication plans, and public health storytelling that meet communities in the digital spaces where they already are.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h3>Leadership &amp; Mentorship</h3>
+        <p>President of two student organizations at Columbia, NMAC NextGen Fellowship mentor to 30 emerging HIV advocates, and a Sexual Health Educator through Project STAY.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="section section-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Featured Work</div>
+      <h2>Sexual health leadership, in practice.</h2>
+    </div>
 
+    <div class="feature reveal">
+      <div class="feature-media">
+        <img src="images/prep-navigation-flowchart.png" alt="HHHRC PrEP Navigation Program workflow">
+      </div>
+      <div>
+        <span class="feature-tag">Program Design</span>
+        <h3>Hawai&rsquo;i's First PrEP Navigation Program</h3>
+        <p>Built a full navigation pathway &mdash; outreach, screening, insurance and co-pay assistance, prescribing, and quarterly follow-up &mdash; at the Hawai&rsquo;i Health &amp; Harm Reduction Center. <span class="stat-line">Exceeded year-one enrollment targets by 300%.</span></p>
+        <div class="feature-links">
+          <a href="sexual-health.html#prep">See the full program &raquo;</a>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="feature reverse reveal">
+      <div class="feature-media split">
+        <img src="images/sexual-health-campaign-1.png" alt="Test Right Before You Swipe Right campaign flyer">
+        <img src="images/sexual-health-campaign-2.png" alt="Your Sexual Health Matters campaign flyer">
+      </div>
+      <div>
+        <span class="feature-tag">Health Communication</span>
+        <h3>Dating-App STI Testing Campaign</h3>
+        <p>Co-designed <em>&ldquo;Test Right Before You Swipe Right,&rdquo;</em> a bilingual campaign for Colorado's Department of Public Health &amp; Environment promoting free, discreet at-home STI testing to dating-app users. <span class="stat-line">10,000+ social impressions.</span></p>
+        <div class="feature-links">
+          <a href="sexual-health.html#campaign">See the full campaign &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<script>
+<section class="section">
+  <div class="wrap quote-block reveal">
+    <blockquote>&ldquo;The most impactful interventions intentionally involve the communities they aim to serve. Embracing my identity and its intersections has proven to be a powerful tool for dismantling the systemic inequities my community encounters.&rdquo;</blockquote>
+    <div class="quote-attr">&mdash; Jeff Remo, from his graduate statement of purpose</div>
+  </div>
+</section>
 
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
+<section class="section section-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Explore</div>
+      <h2>More of my work.</h2>
+    </div>
+    <div class="card-grid">
+      <a href="sexual-health.html" class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Sexual Health Leadership</h3>
+        <p>Programs, campaigns, and writing that advance HIV/STI prevention and sexual health equity.</p>
+      </a>
+      <a href="experience.html" class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Experience &amp; Leadership</h3>
+        <p>My professional journey, academic leadership at Columbia, and full resume.</p>
+      </a>
+      <a href="photos.html" class="card reveal">
+        <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+        <h3>Photos</h3>
+        <p>A look at the person behind the portfolio &mdash; on the ground, in the community.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <h2>Let's work together.</h2>
+        <p class="lede">Open to public health, sexual health equity, and health communication roles.</p>
+      </div>
+      <div class="btn-row">
+        <a href="mailto:jr4550@cumc.columbia.edu" class="btn btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/jefferson-remo-14899811a/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Jeff Remo.</span>
+      <div class="footer-icons">
+        <a href="https://drive.google.com/drive/folders/1JKWGP3zoSb81X0lbf1dDWq6UV6kA8a00" target="_blank" rel="noopener" aria-label="Drive"><i class="fa-brands fa-google-drive"></i></a>
+        <a href="http://github.com/jr4550/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jefferson-remo-14899811a/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+<script src="js/site.js"></script>
 </body>
 </html>
