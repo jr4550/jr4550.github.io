@@ -561,7 +561,9 @@ p { margin: 0 0 1em; color: var(--ink-soft); font-size: 1.05rem; }
   background: var(--accent-tint);
   padding: 4px 10px;
   border-radius: 100px;
+  transition: all 0.2s ease;
 }
+a.proj:hover { background: var(--accent); color: #fff; }
 
 /* ---------- Mobile nav drawer ---------- */
 .mobile-drawer {
